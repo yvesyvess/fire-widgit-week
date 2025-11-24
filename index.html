@@ -1,128 +1,149 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Week Widget</title>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Week Widget 2026 - Fire Gradient</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
-  <style>
-    html,
-    body {
-      margin: 0;
-      padding: 0;
-      width: 100%;
-      height: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background: transparent; /* transparent bg */
-      font-family: 'Inter', sans-serif;
-      color: #fff;
-    }
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@500;700;800&display=swap"
+      rel="stylesheet"
+    />
 
-    .container {
-      position: relative;
-      width: 100%;
-      max-width: 350px;
-      height: 100px;
-      border-radius: 14px;
-      background: #b62d24; /* red background */
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 20px;
-      padding: 15px 30px;
-      box-sizing: border-box;
-      font-weight: 600;
-      font-size: 18px;
-      overflow: hidden;
-      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
-    }
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #f4efe7;
+        font-family: "Inter", sans-serif;
+      }
 
-    .container::before {
-      content: "";
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 90%;
-      height: 70%;
-      background: rgba(255, 255, 255, 0.1);
-      border-radius: 12px;
-      filter: blur(12px);
-      z-index: 0;
-    }
+      .card {
+        width: 100%;
+        max-width: 350px;
+        height: 100px;
+        border-radius: 14px;
+        position: relative;
+        overflow: hidden;
+        background: linear-gradient(135deg, #b62d24 0%, #c73e1d 100%);
+        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
 
-    .wave-bg {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      z-index: 0;
-    }
+      .card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4'/%3E%3C/filter%3E%3Crect width='400' height='400' fill='rgba(0,0,0,0.003)' fi");filter: ='url(%20noise)'/%3E%3C/svg%3E
+        pointer-events: none;
+        z-index: 2;
+      }
 
-    .week,
-    .date {
-      position: relative;
-      z-index: 1;
-      text-shadow: 0 4px 6px rgba(0, 0, 0, 0.25);
-    }
+      .inner-glass {
+        position: absolute;
+        width: 78%;
+        height: 60%;
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 12px;
+        z-index: 3;
+      }
 
-    .week {
-      font-size: 22px;
-      white-space: nowrap;
-      line-height: 1;
-      margin: 0;
-    }
+      .week {
+        position: absolute;
+        top: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 28px;
+        font-weight: 800;
+        color: #4a1408;
+        z-index: 4;
+        letter-spacing: -0.02em;
+      }
 
-    .date {
-      color: #fff;
-      white-space: nowrap;
-      line-height: 1;
-      margin: 0;
-      align-self: center;
-    }
-  </style>
-</head>
+      .date {
+        position: absolute;
+        top: 55px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 18px;
+        font-weight: 500;
+        color: #4a1408;
+        z-index: 4;
+        letter-spacing: -0.01em;
+      }
+    </style>
+  </head>
 
-<body>
-  <div class="container">
-    <svg class="wave-bg" viewBox="0 0 350 100" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <linearGradient id="fireGradient" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0%" stop-color="#FF6F00" />
-          <stop offset="50%" stop-color="#FFB74D" />
-          <stop offset="100%" stop-color="#FFD54F" />
-        </linearGradient>
-      </defs>
-      <path fill="url(#fireGradient)" d="M0,50 C60,0 290,100 350,50 L350,100 L0,100 Z" />
-      <path fill="url(#fireGradient)" opacity="0.6" d="M0,60 C50,20 300,90 350,40 L350,100 L0,100 Z" />
-    </svg>
+  <body>
+    <div class="card">
+      <svg
+        viewBox="0 0 350 100"
+        preserveAspectRatio="none"
+        style="position: absolute; inset: 0; z-index: 1"
+      >
+        <path
+          fill="#B62D24"
+          opacity="0.7"
+          d="M0,42 Q60,72 145,51 Q200,34 350,7 L350,100 L0,100 Z"
+        />
+        <path
+          fill="#EF5C24"
+          opacity="0.65"
+          d="M0,94 Q85,89 165,70 Q215,61 350,24 L350,100 L0,100 Z"
+        />
+        <path
+          fill="#FA9B35"
+          opacity="0.6"
+          d="M0,75 Q72,94 140,91 Q210,88 350,41 L350,100 L0,100 Z"
+        />
+        <path
+          fill="#FDC649"
+          opacity="0.65"
+          d="M0,86 Q88,100 168,100 Q220,84 350,75 L350,100 L0,100 Z"
+        />
+      </svg>
 
-    <div class="week" id="week"></div>
-    <div class="date" id="date"></div>
-  </div>
+      <div class="inner-glass"></div>
+      <div id="week" class="week"></div>
+      <div id="date" class="date"></div>
+    </div>
 
-  <script>
-    const start = new Date('2026-02-16'),
-      today = new Date(),
-      msDay = 864e5,
-      diff = Math.floor((today - start) / msDay),
-      weekNum = diff < 0 ? 1 : Math.floor(diff / 7) + 1,
-      startWeek = new Date(start);
-    startWeek.setDate(start.getDate() + (weekNum - 1) * 7);
-    const endWeek = new Date(startWeek);
-    endWeek.setDate(startWeek.getDate() + 6);
-    const fmt = d => d.toLocaleDateString('en-GB', {
-      day: 'numeric',
-      month: 'short'
-    }).toUpperCase();
-    document.getElementById('week').textContent = `WEEK ${weekNum}`;
-    document.getElementById('date').textContent = `${fmt(startWeek)} – ${fmt(endWeek)}`;
-  </script>
-</body>
+    <script>
+      const projectStartDate = new Date("2026-02-16"),
+        currentDate = new Date(),
+        millisecondsPerDay = 864e5,
+        daysDifference = Math.floor(
+          (currentDate - projectStartDate) / millisecondsPerDay,
+        ),
+        weekNumber =
+          daysDifference < 0 ? 1 : Math.floor(daysDifference / 7) + 1,
+        weekStartDate = new Date(projectStartDate);
 
+      weekStartDate.setDate(projectStartDate.getDate() + (weekNumber - 1) * 7);
+
+      const weekEndDate = new Date(weekStartDate);
+      weekEndDate.setDate(weekStartDate.getDate() + 6);
+
+      const formatDate = (d) =>
+        d.toLocaleDateString("en-GB", {
+          day: "numeric",
+          month: "short",
+        });
+
+      document.getElementById("week").textContent = `WEEK ${weekNumber}`;
+      document.getElementById("date").textContent =
+        `${formatDate(weekStartDate)} – ${formatDate(weekEndDate)}`;
+    </script>
+  </body>
 </html>
